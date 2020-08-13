@@ -1,0 +1,25 @@
+{
+  "name": "react-experiments",
+  "version": "1.0.0",
+  "description": "experimental",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stephenfrancis/react-experiments.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
+    "parcel": "^1.12.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}
