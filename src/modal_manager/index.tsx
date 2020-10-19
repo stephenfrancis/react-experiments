@@ -19,7 +19,7 @@ const Main: React.FC<Props> = (props: Props) => {
       <div>
         <h2>Modal 1</h2>
         <button onClick={toggleModal1}>Toggle</button>
-        <Modal open={modal1} setOpen={setModal1}>
+        <Modal open={modal1} setOpen={setModal1} closeOnBackgroundClick>
           <div>
             <h3>Modal 1</h3>
             <button onClick={toggleModal2}>Open Modal 2</button>
@@ -29,10 +29,11 @@ const Main: React.FC<Props> = (props: Props) => {
       <div>
         <h2>Modal 2</h2>
         <button onClick={toggleModal2}>Toggle</button>
-        <Modal open={modal2} setOpen={setModal2}>
+        <Modal open={modal2} setOpen={setModal2} hideCloseIcon>
           <div>
             <h3>Modal 2</h3>
-            <button onClick={toggleModal1}>Open Modal 1</button>
+            <button onClick={toggleModal1}>Open Modal 1</button>&nbsp;
+            <button onClick={toggleModal2}>Close</button>
           </div>
         </Modal>
       </div>

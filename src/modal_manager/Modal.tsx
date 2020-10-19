@@ -2,6 +2,8 @@ import React from 'react'
 
 interface Props {
   children: JSX.Element
+  closeOnBackgroundClick?: boolean
+  hideCloseIcon?: boolean
   open: boolean
   setOpen: (open: boolean) => void
 }
@@ -12,10 +14,24 @@ const Default: React.FC<Props> = (props: Props) => {
   }
   const backgroundRef = React.useRef<HTMLDivElement>(null)
   const clickOnBackground = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === backgroundRef.current) {
+    if (event.target === backgroundRef.current && props.closeOnBackgroundClick) {
       close()
     }
   }
+  const renderCloseIcon = () => (
+    <div
+      onClick={close}
+      style={{
+        cursor: 'pointer',
+        fontSize: 20,
+        position: 'absolute',
+        right: 10,
+        top: 10,
+      }}
+    >
+      ❌
+    </div>
+  )
   return props.open ? (
     <>
       <div
@@ -46,24 +62,14 @@ const Default: React.FC<Props> = (props: Props) => {
         <div
           style={{
             backgroundColor: 'white',
+            borderRadius: 10,
             height: '50vh',
             padding: 20,
             position: 'relative',
             width: '50vw',
           }}
         >
-          <div
-            onClick={close}
-            style={{
-              cursor: 'pointer',
-              fontSize: 20,
-              position: 'absolute',
-              right: 10,
-              top: 10,
-            }}
-          >
-            ❌
-          </div>
+          {!props.hideCloseIcon && renderCloseIcon()}
           <div>{props.children}</div>
         </div>
       </div>

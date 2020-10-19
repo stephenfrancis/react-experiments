@@ -11,6 +11,9 @@ import StateVsData from './state_vs_data'
 const App: React.FC<{}> = () => {
   return (
     <BrowserRouter>
+      <div>
+        <Link to="/">Home</Link>
+      </div>
       <Switch>
         <Route path="/complex_props">
           <ComplexProps />
