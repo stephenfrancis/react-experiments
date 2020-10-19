@@ -2,8 +2,10 @@
   "name": "react-experiments",
   "version": "1.0.0",
   "description": "experimental",
-  "main": "index.js",
+  "main": "dist/index.html",
   "scripts": {
+    "build": "npx parcel build src/index.html",
+    "clean": "rm -f -r dist/",
     "exec": "node src/Server.js",
     "local": "npx parcel serve src/index.html"
   },
@@ -22,6 +24,7 @@
     "@types/react-router-dom": "^5.1.6",
     "axios": "^0.20",
     "koa": "^2.13.0",
+    "koa-static": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
