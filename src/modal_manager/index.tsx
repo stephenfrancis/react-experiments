@@ -15,23 +15,29 @@ const Main: React.FC<Props> = (props: Props) => {
   }
   return (
     <div>
-      <h1>Test Modals</h1>
+      <h2> Modal Manager</h2>
+      <p>
+        A Custom Hook is used instead of Redux to globally-coordinate Modals - i.e. to ensure no
+        more than one modal can be open at a time. Each Modal is governed by a boolean state
+        variable created from the Custom Hook, which stores globally a closer function for any open
+        modal, and calls it before opening a new one.
+      </p>
       <div>
-        <h2>Modal 1</h2>
+        <h3>Modal 1</h3>
         <button onClick={toggleModal1}>Toggle</button>
         <Modal open={modal1} setOpen={setModal1} closeOnBackgroundClick>
           <div>
-            <h3>Modal 1</h3>
+            <h4>Modal 1</h4>
             <button onClick={toggleModal2}>Open Modal 2</button>
           </div>
         </Modal>
       </div>
       <div>
-        <h2>Modal 2</h2>
+        <h3>Modal 2</h3>
         <button onClick={toggleModal2}>Toggle</button>
         <Modal open={modal2} setOpen={setModal2} hideCloseIcon>
           <div>
-            <h3>Modal 2</h3>
+            <h4>Modal 2</h4>
             <button onClick={toggleModal1}>Open Modal 1</button>&nbsp;
             <button onClick={toggleModal2}>Close</button>
           </div>

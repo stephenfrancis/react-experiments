@@ -1,9 +1,5 @@
 import * as React from 'react'
 
-/*
-Experiment B: state vs (ajax) data
-*/
-
 const ajaxMock = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -19,19 +15,25 @@ const ajaxMock = () => {
 
 const load_state = ['waiting', 'loading', 'loaded', 'error']
 
-// need to experiment with storing the ajax data in a memo or something...
-
 const Main: React.FC<{}> = () => {
   const [num, setNum] = React.useState<number>(0)
+  const ref = React.useRef<any>(null)
   React.useEffect(() => {
     setTimeout(() => {
       setNum(1)
       ajaxMock().then((data) => {
+        ref.current = data
         setNum(2)
       })
     }, 3000)
   }, [])
-  return <div>Component B: {load_state[num]}</div>
+  return (
+    <div>
+      <h2>State vs Data</h2>
+      <p>Looking for ways to store Ajax data separately from state</p>
+      {load_state[num]}, data: {JSON.stringify(ref.current)}
+    </div>
+  )
 }
 
 export default Main

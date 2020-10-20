@@ -43,14 +43,27 @@ const Main: React.FC<{}> = () => {
     }, 2000)
   }, [complex])
   return (
-    <div>
-      Component C: <Display complex={complex} />
+    <div style={{ border: '1px solid blue', padding: 10 }}>
+      <h2>Complex Props</h2>
+      <p>
+        A complex object (containing various values, including another object) is the state of an
+        outer component (blue) and is passed as props to an inner one (green)
+      </p>
+      <Display complex={complex} />
     </div>
   )
 }
 
 const Display: React.FC<{ complex: Complex }> = (props) => {
-  return <div>Display: {JSON.stringify(props.complex)}</div>
+  return (
+    <div style={{ border: '1px solid green', padding: 10 }}>
+      <p>
+        The object is changed automatically in various ways at 2-second intervals, demonstrating
+        that React's state-change and prop-change algorithm does deep-comparison of these objects.
+      </p>
+      {JSON.stringify(props.complex)}
+    </div>
+  )
 }
 
 export default Main

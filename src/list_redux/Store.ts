@@ -9,7 +9,7 @@ interface Action {
   type: ActionType
 }
 
-interface State {
+export interface State {
   data?: any
   error?: string
   loaded: boolean
@@ -45,7 +45,7 @@ export const store = createStore(listStateChange)
 
 export const boundError = (error: string) => {
   store.dispatch({
-    type: 'LOADED',
+    type: 'ERROR',
     error,
   })
 }

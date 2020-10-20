@@ -36,10 +36,10 @@ const App: React.FC<{}> = () => {
               <Link to="/complex_props">Complex Props</Link>
             </li>
             <li>
-              <Link to="/modal_manager">Modal Manager</Link>
+              <Link to="/list_redux">List Redux</Link>
             </li>
             <li>
-              <Link to="/list_redux">List Redux</Link>
+              <Link to="/modal_manager">Modal Manager</Link>
             </li>
             <li>
               <Link to="/state_engine">State Engine</Link>

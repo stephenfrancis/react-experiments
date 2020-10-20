@@ -17,6 +17,11 @@ const sortFunct = (sort) => {
   }
 }
 
-module.exports = async ctx => {
+module.exports = async (ctx, next) => {
+  if (ctx.path !== "/api") {
+    console.log(`list_redux/Server.js ignoring ${ctx.path}`)
+    return await next()
+  }
+  console.log(`list_redux/Server.js serving ${ctx.query.sort}`)
   ctx.body = data.sort(sortFunct(ctx.query.sort || "a"))
 }

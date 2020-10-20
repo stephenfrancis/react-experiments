@@ -23,6 +23,7 @@
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
     "axios": "^0.20",
+    "http-graceful-shutdown": "^2.3.2",
     "koa": "^2.13.0",
     "koa-static": "^5.0.0",
     "react": "^16.13.1",
