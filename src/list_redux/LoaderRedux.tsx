@@ -1,13 +1,16 @@
 import React from 'react'
+import { connect, Provider } from 'react-redux'
 import { boundError, boundLoaded, boundUnloaded, State, store } from './Store'
 import Table from './Table'
 
 interface Props {}
 
-const reload = (sort) => {
-  fetch(`/api?sort=${sort}`)
+const reload = (sort: string, sort_desc: boolean) => {
+  console.log(`reload`)
+  fetch(`/api?sort=${sort}&sort_desc=${sort_desc}`)
     .then((resp) => resp.json())
     .then((resp_data) => {
+      console.log(`reload(): then`)
       boundLoaded(resp_data)
     })
     .catch((error) => {
@@ -16,30 +19,35 @@ const reload = (sort) => {
     })
 }
 
-const LoaderRedux: React.FC<Props> = (props: Props) => {
-  const [tick, setTick] = React.useState<number>(0)
-  const ref = React.useRef<State>({
-    data: null,
-    error: null,
-    loaded: false,
-    sort: 'a',
-  })
-  reload('a')
-  React.useEffect(() => {
-    store.subscribe(() => {
-      ref.current = store.getState()
-      console.log(`redux state change -> ${JSON.stringify(ref.current)}`)
-      if (!ref.current.loaded && ref.current.sort) {
-        reload(ref.current.sort)
-      }
-      setTick(tick + 1)
-    })
-  }, [])
-
-  return ref.current.data ? (
-    <Table data={ref.current.data} sort={ref.current.sort} setSort={boundUnloaded} />
+const Inner: React.FC<any> = (props) => {
+  const setSort = (sort: string, sort_desc: boolean) => {
+    props.boundUnloaded(sort, sort_desc)
+    reload(sort, sort_desc)
+  }
+  return props.data ? (
+    <Table data={props.data} sort={props.sort} sort_desc={props.sort_desc} setSort={setSort} />
   ) : (
     <div>Loading...</div>
+  )
+}
+
+const mapStateToProps = (state: State /*, ownProps*/) => {
+  return state
+}
+
+const mapDispatchToProps = { boundError, boundLoaded, boundUnloaded }
+
+const Middle = connect(mapStateToProps, mapDispatchToProps)(Inner)
+
+const LoaderRedux: React.FC<Props> = (props: Props) => {
+  React.useEffect(() => {
+    boundUnloaded('a', false)
+    reload('a', false)
+  }, [])
+  return (
+    <Provider store={store}>
+      <Middle />
+    </Provider>
   )
 }
 

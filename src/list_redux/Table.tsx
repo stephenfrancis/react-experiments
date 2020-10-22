@@ -1,10 +1,37 @@
 import React from 'react'
-import { setFlagsFromString } from 'v8'
 
 interface Props {
   data: any[]
-  setSort: (sort: string) => void
+  setSort: (sort: string, sort_desc: boolean) => void
   sort: string
+  sort_desc: boolean
+}
+
+interface HeadingProps {
+  column: string
+  setSort: (sort: string, sort_desc: boolean) => void
+  sort: string
+  sort_desc: boolean
+}
+
+const Heading: React.FC<HeadingProps> = (props) => {
+  const sort_arrow = props.sort_desc ? '▼' : '▲'
+  return (
+    <th
+      className="clickable"
+      style={{
+        minWidth: 100,
+        textAlign: 'left',
+      }}
+      onClick={props.setSort.bind(
+        this,
+        props.column,
+        props.sort === props.column && !props.sort_desc
+      )}
+    >
+      Head {props.column.toUpperCase()} {props.sort === props.column ? sort_arrow : ''}
+    </th>
+  )
 }
 
 const Default: React.FC<Props> = (props: Props) => {
@@ -12,10 +39,30 @@ const Default: React.FC<Props> = (props: Props) => {
     <table>
       <thead>
         <tr>
-          <th onClick={props.setSort.bind(this, 'a')}>Head 1 {props.sort === 'a' ? '↑' : ''}</th>
-          <th onClick={props.setSort.bind(this, 'b')}>Head 2 {props.sort === 'b' ? '↑' : ''}</th>
-          <th onClick={props.setSort.bind(this, 'c')}>Head 3 {props.sort === 'c' ? '↑' : ''}</th>
-          <th onClick={props.setSort.bind(this, 'd')}>Head 4 {props.sort === 'd' ? '↑' : ''}</th>
+          <Heading
+            column="a"
+            sort={props.sort}
+            sort_desc={props.sort_desc}
+            setSort={props.setSort}
+          />
+          <Heading
+            column="b"
+            sort={props.sort}
+            sort_desc={props.sort_desc}
+            setSort={props.setSort}
+          />
+          <Heading
+            column="c"
+            sort={props.sort}
+            sort_desc={props.sort_desc}
+            setSort={props.setSort}
+          />
+          <Heading
+            column="d"
+            sort={props.sort}
+            sort_desc={props.sort_desc}
+            setSort={props.setSort}
+          />
         </tr>
       </thead>
       <tbody>
