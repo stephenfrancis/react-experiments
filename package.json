@@ -7,7 +7,8 @@
     "build": "npx parcel build src/index.html",
     "clean": "rm -f -r dist/",
     "exec": "node src/Server.js",
-    "local": "npx parcel serve src/index.html"
+    "local": "npx parcel serve src/index.html",
+    "test": "npx jest"
   },
   "author": "",
   "repository": {
