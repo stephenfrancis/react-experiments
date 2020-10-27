@@ -1,15 +1,17 @@
 import React from 'react'
 import Table from './Table'
 
-interface Props {}
+interface Props {
+  fetch: (input: RequestInfo, init?: RequestInit | undefined) => Promise<Response>
+}
 
 const Default: React.FC<Props> = (props: Props) => {
   const [data, setData] = React.useState<any[] | null>(null)
   const [sort, setSort] = React.useState<string>('a')
   const [sort_desc, setSortDesc] = React.useState<boolean>(false)
   React.useEffect(() => {
-    // setData(null)
-    fetch(`/api?sort=${sort}&sort_desc=${sort_desc}`)
+    props
+      .fetch(`/api?sort=${sort}&sort_desc=${sort_desc}`)
       .then((resp) => resp.json())
       .then((resp_data) => {
         setData(resp_data)

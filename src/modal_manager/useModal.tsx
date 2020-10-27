@@ -17,7 +17,7 @@ const Default: () => [boolean, (open: boolean) => void] = () => {
       closeCurrent()
     }
     if (open) {
-      closeCurrent = setOpenInner.bind(this, false)
+      closeCurrent = setOpenInner.bind(undefined, false)
     } else {
       closeCurrent = null
     }

@@ -20,6 +20,7 @@ const Default: React.FC<Props> = (props: Props) => {
   }
   const renderCloseIcon = () => (
     <div
+      className="modal-close-button"
       onClick={close}
       style={{
         cursor: 'pointer',

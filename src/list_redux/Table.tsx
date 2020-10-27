@@ -24,7 +24,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
         textAlign: 'left',
       }}
       onClick={props.setSort.bind(
-        this,
+        undefined,
         props.column,
         props.sort === props.column && !props.sort_desc
       )}

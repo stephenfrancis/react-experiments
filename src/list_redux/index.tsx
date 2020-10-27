@@ -14,7 +14,7 @@ const Main: React.FC<Props> = (props: Props) => {
         are clickable to re-sort the list accordingly, re-triggering the sequence.
       </p>
       <h3>Non-Redux Loader</h3>
-      <LoaderNonRedux />
+      <LoaderNonRedux fetch={window.fetch.bind(window)} />
       <h3>Reducer Loader</h3>
       <LoaderReducer />
       <h3>Redux Loader</h3>
