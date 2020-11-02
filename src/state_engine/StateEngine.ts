@@ -1,5 +1,6 @@
-type SetStateFunc = (arg: number) => void;
+export type SetStateFunc = (arg: number) => void;
 
+console.log(`real StateEngine invoked`)
 const set_state_functs: SetStateFunc[] = [];
 
 export const registerSetStateFunction = (f: SetStateFunc) => {
