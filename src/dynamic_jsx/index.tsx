@@ -45,14 +45,14 @@ const TreeReplacer: React.FC<{ match: string; depth?: number }> = (props) => {
     console.log(
       `child is React elem: ${Object.keys(props.children)}, ${(props.children as any).type}`
     )
-    return props.children
-    // return React.cloneElement(
-    //   props.children,
-    //   undefined,
-    //   <TreeReplacer match={props.match} depth={(props.depth || 0) + 1}>
-    //     <>{props.children && props.children.props && props.children.props.children}</>
-    //   </TreeReplacer>
-    // )
+    // return props.children
+    return React.cloneElement(
+      props.children,
+      undefined,
+      <TreeReplacer match={props.match} depth={(props.depth || 0) + 1}>
+        {props.children.props.children}
+      </TreeReplacer>
+    )
   }
   return null
 }
