@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter, Link } from 'react-router-dom'
 import ComplexProps from './complex_props'
+import DynamicJSX from './dynamic_jsx'
 import ListRedux from './list_redux'
 import ModalManager from './modal_manager'
 import StateEngine from './state_engine'
@@ -17,6 +18,9 @@ const App: React.FC<{}> = () => {
       <Switch>
         <Route path="/complex_props">
           <ComplexProps />
+        </Route>
+        <Route path="/dynamic_jsx">
+          <DynamicJSX />
         </Route>
         <Route path="/list_redux">
           <ListRedux />
@@ -34,6 +38,9 @@ const App: React.FC<{}> = () => {
           <ul>
             <li>
               <Link to="/complex_props">Complex Props</Link>
+            </li>
+            <li>
+              <Link to="/dynamic_jsx">Dynamic JSX</Link>
             </li>
             <li>
               <Link to="/list_redux">List Redux</Link>
