@@ -4,17 +4,19 @@ import { Route, Switch } from 'react-router'
 import { BrowserRouter, Link } from 'react-router-dom'
 import ComplexProps from './complex_props'
 import DynamicJSX from './dynamic_jsx'
+import KeyboardListener from './keyboard_listener'
 import ListRedux from './list_redux'
 import ModalManager from './modal_manager'
+import RadioGroup from './radio_group'
 import StateEngine from './state_engine'
 import StateVsData from './state_vs_data'
 
 const App: React.FC<{}> = () => {
   return (
     <BrowserRouter>
-      <div>
+      <nav>
         <Link to="/">Home</Link>
-      </div>
+      </nav>
       <Switch>
         <Route path="/complex_props">
           <ComplexProps />
@@ -22,11 +24,17 @@ const App: React.FC<{}> = () => {
         <Route path="/dynamic_jsx">
           <DynamicJSX />
         </Route>
+        <Route path="/keyboard_listener">
+          <KeyboardListener />
+        </Route>
         <Route path="/list_redux">
           <ListRedux />
         </Route>
         <Route path="/modal_manager">
           <ModalManager />
+        </Route>
+        <Route path="/radio_group">
+          <RadioGroup />
         </Route>
         <Route path="/state_engine">
           <StateEngine />
@@ -43,10 +51,16 @@ const App: React.FC<{}> = () => {
               <Link to="/dynamic_jsx">Dynamic JSX</Link>
             </li>
             <li>
+              <Link to="/keyboard_listener">Keyboard Listener</Link>
+            </li>
+            <li>
               <Link to="/list_redux">List Redux</Link>
             </li>
             <li>
               <Link to="/modal_manager">Modal Manager</Link>
+            </li>
+            <li>
+              <Link to="/radio_group">Radio Group</Link>
             </li>
             <li>
               <Link to="/state_engine">State Engine</Link>
