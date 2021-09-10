@@ -4,11 +4,17 @@ interface Props {
   id: string
   icon?: string
   label: string
-  selected: boolean
+  selected?: boolean
 }
 
 const RadioButton: React.FC<Props> = (props: Props) => {
-  console.log(`RadioButton: ${JSON.stringify(props)}`)
+  // console.log(`RadioButton: ${JSON.stringify(props)}`)
+  React.useEffect(() => {
+    console.log(`mounting ${props.id}`)
+    return () => {
+      console.log(`dismounting ${props.id}`)
+    }
+  }, [])
   return (
     <div
       style={{

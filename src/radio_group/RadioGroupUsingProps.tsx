@@ -9,6 +9,44 @@ interface Props {
 }
 
 const RadioGroupUsingProps: React.FC<Props> = (props: Props) => {
+  const renderOption = React.useCallback(
+    (value: string) => (child: JSX.Element) => {
+      const handleClick = props.onChange.bind(null, child.props.id)
+      // const handleClick = () => {
+      //   console.log(`clicked: ${child.props.id}`)
+      // }
+      return (
+        <div key={child.props.id}>
+          <input
+            checked={value === child.props.id}
+            id={child.props.id}
+            name={props.name}
+            onChange={handleClick}
+            style={{
+              display: 'none',
+            }}
+            type="radio"
+            value={child.props.id}
+          />
+          <label
+            htmlFor={child.props.id}
+            style={{
+              display: 'block',
+            }}
+          >
+            {React.cloneElement(child, {
+              selected: value === child.props.id,
+            })}
+          </label>
+        </div>
+      )
+    },
+    [props.name]
+  )
+
+  const children = React.useMemo(() => {
+    return React.Children.map(props.children, renderOption(props.value))
+  }, [props.value])
   return (
     <fieldset
       style={{
@@ -26,34 +64,7 @@ const RadioGroupUsingProps: React.FC<Props> = (props: Props) => {
       >
         {props.legend}
       </legend>
-      {React.Children.map(props.children, (child: JSX.Element) => {
-        const handleClick = props.onChange.bind(null, child.props.id)
-        return (
-          <div key={child.props.id}>
-            <input
-              checked={props.value === child.props.id}
-              id={child.props.id}
-              name={props.name}
-              onChange={handleClick}
-              style={{
-                display: 'none',
-              }}
-              type="radio"
-              value={child.props.id}
-            />
-            <label
-              htmlFor={child.props.id}
-              style={{
-                display: 'block',
-              }}
-            >
-              {React.cloneElement(child, {
-                selected: props.value === child.props.id,
-              })}
-            </label>
-          </div>
-        )
-      })}
+      {children}
     </fieldset>
   )
 }

@@ -2,12 +2,14 @@ import React from 'react'
 import RadioButton from './RadioButton'
 import RadioGroupUsingConfig from './RadioGroupUsingConfig'
 import RadioGroupUsingProps from './RadioGroupUsingProps'
+import RadioGroupManual from './RadioGroupManual'
 
 interface Props {}
 
 const Main: React.FC<Props> = (props: Props) => {
   const [drink1, setDrink1] = React.useState<string>('bra')
   const [drink2, setDrink2] = React.useState<string>('bra')
+  const [drink3, setDrink3] = React.useState<string>('bra')
   return (
     <div>
       <h2>Comparison of Radio Group Factoring Techniques</h2>
@@ -26,6 +28,7 @@ const Main: React.FC<Props> = (props: Props) => {
         renderer={RadioButton}
         value={drink1}
       />
+
       <h3>Radio Group using Props</h3>
       <RadioGroupUsingProps
         legend="Choose a drink"
@@ -33,11 +36,19 @@ const Main: React.FC<Props> = (props: Props) => {
         onChange={setDrink2}
         value={drink2}
       >
-        <RadioButton selected={false} id="bra" label="Brandy" />
-        <RadioButton selected={false} id="whi" label="Whisky" />
-        <RadioButton selected={false} id="rum" label="Rum" />
-        <RadioButton selected={false} id="cha" label="Cachaça" />
+        <RadioButton id="bra" label="Brandy" />
+        <RadioButton id="whi" label="Whisky" />
+        <RadioButton id="rum" label="Rum" />
+        <RadioButton id="cha" label="Cachaça" />
       </RadioGroupUsingProps>
+
+      <h3>Radio Group Manual</h3>
+      <RadioGroupManual
+        legend="Choose a drink"
+        name="drinks3"
+        onChange={setDrink3}
+        value={drink3}
+      />
     </div>
   )
 }

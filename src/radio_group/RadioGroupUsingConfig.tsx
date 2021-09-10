@@ -5,20 +5,57 @@ export interface RadioOption {
   label: string
 }
 
+type OnChangeFunc = (newValue: string) => void
+
 interface RendererProps extends RadioOption {
-  selected: boolean
+  selected?: boolean
 }
 
-interface Props {
-  config: (any & RadioOption)[]
-  legend: string
+interface RadioOptionProps {
   name: string
-  onChange: (newValue: string) => void
+  onChange: OnChangeFunc
+  option: RadioOption
   renderer: React.FC<RendererProps>
   value: string
 }
 
-const RadioGroupUsingConfig: React.FC<Props> = (props: Props) => {
+const RadioOption: React.FC<RadioOptionProps> = (props) => {
+  const handleClick = props.onChange.bind(null, props.option.id)
+  return (
+    <div key={props.option.id}>
+      <input
+        checked={props.value === props.option.id}
+        id={`${props.name}-${props.option.id}`}
+        name={props.name}
+        onChange={handleClick}
+        style={{
+          display: 'none',
+        }}
+        type="radio"
+        value={props.option.id}
+      />
+      <label
+        htmlFor={`${props.name}-${props.option.id}`}
+        style={{
+          display: 'block',
+        }}
+      >
+        <props.renderer {...props.option} selected={props.value === props.option.id} />
+      </label>
+    </div>
+  )
+}
+
+interface MainProps {
+  config: (any & RadioOption)[]
+  legend: string
+  name: string
+  onChange: OnChangeFunc
+  renderer: React.FC<RendererProps>
+  value: string
+}
+
+const RadioGroupUsingConfig: React.FC<MainProps> = (props: MainProps) => {
   return (
     <fieldset
       style={{
@@ -36,32 +73,16 @@ const RadioGroupUsingConfig: React.FC<Props> = (props: Props) => {
       >
         {props.legend}
       </legend>
-      {props.config.map((option) => {
-        const handleClick = props.onChange.bind(null, option.id)
-        return (
-          <div key={option.id}>
-            <input
-              checked={props.value === option.id}
-              id={`${props.name}-${option.id}`}
-              name={props.name}
-              onChange={handleClick}
-              style={{
-                display: 'none',
-              }}
-              type="radio"
-              value={option.id}
-            />
-            <label
-              htmlFor={`${props.name}-${option.id}`}
-              style={{
-                display: 'block',
-              }}
-            >
-              <props.renderer {...option} selected={props.value === option.id} />
-            </label>
-          </div>
-        )
-      })}
+      {props.config.map((option) => (
+        <RadioOption
+          key={option.id}
+          option={option}
+          onChange={props.onChange}
+          name={props.name}
+          value={props.value}
+          renderer={props.renderer}
+        />
+      ))}
     </fieldset>
   )
 }
