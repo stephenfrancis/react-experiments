@@ -10,6 +10,7 @@ import ModalManager from './modal_manager'
 import RadioGroup from './radio_group'
 import StateEngine from './state_engine'
 import StateVsData from './state_vs_data'
+import VisualLayout from './visual_layout'
 
 const App: React.FC<{}> = () => {
   return (
@@ -42,6 +43,9 @@ const App: React.FC<{}> = () => {
         <Route path="/state_vs_data">
           <StateVsData />
         </Route>
+        <Route path="/visual_layout">
+          <VisualLayout />
+        </Route>
         <Route>
           <ul>
             <li>
@@ -67,6 +71,9 @@ const App: React.FC<{}> = () => {
             </li>
             <li>
               <Link to="/state_vs_data">State vs Data</Link>
+            </li>
+            <li>
+              <Link to="/visual_layout">Visual Layout</Link>
             </li>
           </ul>
         </Route>
