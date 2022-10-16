@@ -15,7 +15,7 @@ const getScrollParent = (node: Node): Node | null => {
   return (node.parentNode && getScrollParent(node.parentNode)) || document.body
 }
 
-const Main: React.FC<Props> = (props: Props) => {
+export const ScrollingAndSticky: React.FC<Props> = (props: Props) => {
   const divRef = React.useRef<HTMLDivElement>(null)
   const [experimentMode, setExperimentMode] = React.useState<ExperimentMode>('simple')
   const [scrollingNodeText, setScrollingNodeText] = React.useState<string>('<unknown>')
@@ -141,5 +141,3 @@ const Main: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default Main

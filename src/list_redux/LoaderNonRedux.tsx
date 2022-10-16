@@ -1,11 +1,11 @@
 import React from 'react'
-import Table from './Table'
+import { Table } from './Table'
 
 interface Props {
   fetch: (input: RequestInfo, init?: RequestInit | undefined) => Promise<Response>
 }
 
-const Default: React.FC<Props> = (props: Props) => {
+export const LoaderNonRedux: React.FC<Props> = (props: Props) => {
   const [data, setData] = React.useState<any[] | null>(null)
   const [sort, setSort] = React.useState<string>('a')
   const [sort_desc, setSortDesc] = React.useState<boolean>(false)
@@ -35,5 +35,3 @@ const Default: React.FC<Props> = (props: Props) => {
     <div>Loading...</div>
   )
 }
-
-export default Default

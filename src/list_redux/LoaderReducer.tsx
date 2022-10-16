@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from './Table'
+import { Table } from './Table'
 import { listReducer } from './Store'
 
 interface Props {}
@@ -11,7 +11,7 @@ const initialState = {
   sort_desc: false,
 }
 
-const LoaderReducer: React.FC<Props> = (props: Props) => {
+export const LoaderReducer: React.FC<Props> = (props: Props) => {
   const [state, dispatch] = React.useReducer(listReducer, initialState)
   React.useEffect(() => {
     fetch(`/api?sort=${state.sort}&sort_desc=${state.sort_desc}`)
@@ -35,5 +35,3 @@ const LoaderReducer: React.FC<Props> = (props: Props) => {
     <div>Loading...</div>
   )
 }
-
-export default LoaderReducer

@@ -8,7 +8,7 @@ interface Props {
   value: string
 }
 
-const RadioGroupUsingProps: React.FC<Props> = (props: Props) => {
+export const RadioGroupUsingProps: React.FC<Props> = (props: Props) => {
   const renderOption = React.useCallback(
     (value: string) => (child: JSX.Element) => {
       const handleClick = props.onChange.bind(null, child.props.id)
@@ -68,5 +68,3 @@ const RadioGroupUsingProps: React.FC<Props> = (props: Props) => {
     </fieldset>
   )
 }
-
-export default RadioGroupUsingProps

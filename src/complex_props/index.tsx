@@ -28,7 +28,7 @@ const changeComplex = (complex: Complex) => {
   return new_complex
 }
 
-const Main: React.FC<{}> = () => {
+export const ComplexProps: React.FC<{}> = () => {
   const [complex, setComplex] = React.useState<Complex>({
     a: 'A',
     b: 1,
@@ -65,5 +65,3 @@ const Display: React.FC<{ complex: Complex }> = (props) => {
     </div>
   )
 }
-
-export default Main

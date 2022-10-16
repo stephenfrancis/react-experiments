@@ -1,8 +1,12 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import '@testing-library/jest-dom'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
-import NumDisplay from './NumDisplay'
+import { NumDisplay } from './NumDisplay'
 import { registerSetStateFunction, SetStateFunc } from './StateEngine'
 
 jest.mock('./StateEngine')

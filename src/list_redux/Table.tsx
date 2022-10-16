@@ -3,15 +3,15 @@ import React from 'react'
 interface Props {
   data: any[]
   setSort: (sort: string, sort_desc: boolean) => void
-  sort: string
-  sort_desc: boolean
+  sort: string | undefined
+  sort_desc: boolean | undefined
 }
 
 interface HeadingProps {
   column: string
   setSort: (sort: string, sort_desc: boolean) => void
-  sort: string
-  sort_desc: boolean
+  sort: string | undefined
+  sort_desc: boolean | undefined
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
@@ -34,7 +34,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
   )
 }
 
-const Default: React.FC<Props> = (props: Props) => {
+export const Table: React.FC<Props> = (props: Props) => {
   return (
     <table>
       <thead>
@@ -78,5 +78,3 @@ const Default: React.FC<Props> = (props: Props) => {
     </table>
   )
 }
-
-export default Default

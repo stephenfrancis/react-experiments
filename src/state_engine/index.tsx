@@ -1,7 +1,7 @@
 import * as React from 'react'
-import NumDisplay from './NumDisplay'
+import { NumDisplay } from './NumDisplay'
 
-const Main: React.FC<{}> = () => {
+export const StateEngine: React.FC<{}> = () => {
   return (
     <div>
       <h2>State Engine</h2>
@@ -11,5 +11,3 @@ const Main: React.FC<{}> = () => {
     </div>
   )
 }
-
-export default Main

@@ -15,7 +15,7 @@ const ajaxMock = () => {
 
 const load_state = ['waiting', 'loading', 'loaded', 'error']
 
-const Main: React.FC<{}> = () => {
+export const StateVsData: React.FC<{}> = () => {
   const [num, setNum] = React.useState<number>(0)
   const ref = React.useRef<any>(null)
   React.useEffect(() => {
@@ -35,5 +35,3 @@ const Main: React.FC<{}> = () => {
     </div>
   )
 }
-
-export default Main

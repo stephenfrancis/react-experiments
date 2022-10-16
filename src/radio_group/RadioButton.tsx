@@ -7,7 +7,7 @@ interface Props {
   selected?: boolean
 }
 
-const RadioButton: React.FC<Props> = (props: Props) => {
+export const RadioButton: React.FC<Props> = (props: Props) => {
   // console.log(`RadioButton: ${JSON.stringify(props)}`)
   React.useEffect(() => {
     console.log(`mounting ${props.id}`)
@@ -31,5 +31,3 @@ const RadioButton: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default RadioButton

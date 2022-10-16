@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect, Provider } from 'react-redux'
 import { boundError, boundLoaded, boundUnloaded, State, store } from './Store'
-import Table from './Table'
+import { Table } from './Table'
 
 interface Props {}
 
@@ -39,7 +39,7 @@ const mapDispatchToProps = { boundError, boundLoaded, boundUnloaded }
 
 const Middle = connect(mapStateToProps, mapDispatchToProps)(Inner)
 
-const LoaderRedux: React.FC<Props> = (props: Props) => {
+export const LoaderRedux: React.FC<Props> = (props: Props) => {
   React.useEffect(() => {
     boundUnloaded('a', false)
     reload('a', false)
@@ -50,5 +50,3 @@ const LoaderRedux: React.FC<Props> = (props: Props) => {
     </Provider>
   )
 }
-
-export default LoaderRedux

@@ -1,10 +1,10 @@
 import React from 'react'
-import Modal from './Modal'
+import { Modal } from './Modal'
 import useModal from './useModal'
 
 interface Props {}
 
-const Main: React.FC<Props> = (props: Props) => {
+export const ModalManager: React.FC<Props> = (props: Props) => {
   const [modal1, setModal1] = useModal()
   const [modal2, setModal2] = useModal()
   const toggleModal1 = () => {
@@ -46,5 +46,3 @@ const Main: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default Main

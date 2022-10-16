@@ -36,7 +36,7 @@ export function useEventListener(eventName: 'keyup' | 'keydown', handler: Keyboa
   )
 }
 
-const Main: React.FC<Props> = (props: Props) => {
+export const KeyboardListener: React.FC<Props> = (props: Props) => {
   const [word, setWord] = React.useState<string>('')
 
   useEventListener(
@@ -63,5 +63,3 @@ const Main: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default Main

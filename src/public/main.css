@@ -1,0 +1,50 @@
+body {
+  font-family: Arial;
+  color: #202020;
+}
+
+a {
+  color: unset;
+}
+
+input {
+  padding: 4px;
+}
+
+.ModalBackground {
+  background-color: #000;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.ModalContainer {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.ModalMain {
+  background-color: white;
+  border-radius: 10px;
+  height: 50vh;
+  padding: 20px;
+  position: relative;
+  width: 50vw;
+}
+
+.ModalCloser {
+  cursor: pointer;
+  font-size: 15px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

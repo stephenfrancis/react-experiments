@@ -7,11 +7,11 @@ const StringReplacer: React.FC<{ arg: string; match: string }> = (props) => {
   let from = 0
   let to
   while ((to = props.arg.indexOf(props.match, from)) > -1) {
-    out.push(<span key={`s${from}`}>{props.arg.substr(from, to - from)}</span>)
+    out.push(<span key={`s${from}`}>{props.arg.substring(from, to)}</span>)
     out.push(<b key={`b${from}`}>{props.match}</b>)
     from = to + 2
   }
-  out.push(<span key={`s${from}`}>{props.arg.substr(from, props.arg.length - from)}</span>)
+  out.push(<span key={`s${from}`}>{props.arg.substring(from, props.arg.length)}</span>)
   return <>{out}</>
 }
 
@@ -57,7 +57,7 @@ const TreeReplacer: React.FC<{ match: string; depth?: number }> = (props) => {
   return null
 }
 
-const Main: React.FC<Props> = (props: Props) => {
+export const DynamicJSX: React.FC<Props> = (props: Props) => {
   return (
     <div>
       <h2>Dynamic JSX - Components that Manipulate the JSX Tree Dynamically</h2>
@@ -75,5 +75,3 @@ const Main: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default Main

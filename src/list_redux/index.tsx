@@ -1,11 +1,11 @@
 import React from 'react'
-import LoaderNonRedux from './LoaderNonRedux'
-import LoaderReducer from './LoaderReducer'
-import LoaderRedux from './LoaderRedux'
+import { LoaderNonRedux } from './LoaderNonRedux'
+import { LoaderReducer } from './LoaderReducer'
+import { LoaderRedux } from './LoaderRedux'
 
 interface Props {}
 
-const Main: React.FC<Props> = (props: Props) => {
+export const ListRedux: React.FC<Props> = (props: Props) => {
   return (
     <div>
       <h2>Comparison of Redux and Non-Redux List Management Techniques</h2>
@@ -22,5 +22,3 @@ const Main: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default Main

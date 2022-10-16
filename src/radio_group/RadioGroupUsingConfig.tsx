@@ -55,7 +55,7 @@ interface MainProps {
   value: string
 }
 
-const RadioGroupUsingConfig: React.FC<MainProps> = (props: MainProps) => {
+export const RadioGroupUsingConfig: React.FC<MainProps> = (props: MainProps) => {
   return (
     <fieldset
       style={{
@@ -86,5 +86,3 @@ const RadioGroupUsingConfig: React.FC<MainProps> = (props: MainProps) => {
     </fieldset>
   )
 }
-
-export default RadioGroupUsingConfig

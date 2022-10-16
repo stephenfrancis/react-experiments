@@ -1,7 +1,11 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import '@testing-library/jest-dom'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
-import LoaderNonRedux from './LoaderNonRedux'
+import { LoaderNonRedux } from './LoaderNonRedux'
 
 describe('how the LoaderNonRedux works', () => {
   test('shows Loading... then content', async () => {
@@ -14,7 +18,7 @@ describe('how the LoaderNonRedux works', () => {
         ]
       },
     }
-    const fetchMock = jest.fn(() => Promise.resolve((resp as unknown) as Response))
+    const fetchMock = jest.fn(() => Promise.resolve(resp as unknown as Response))
     const { findAllByText } = render(<LoaderNonRedux fetch={fetchMock} />)
 
     const elem1 = await findAllByText(/Loading.../)

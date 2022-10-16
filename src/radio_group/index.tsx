@@ -1,12 +1,12 @@
 import React from 'react'
-import RadioButton from './RadioButton'
-import RadioGroupUsingConfig from './RadioGroupUsingConfig'
-import RadioGroupUsingProps from './RadioGroupUsingProps'
-import RadioGroupManual from './RadioGroupManual'
+import { RadioButton } from './RadioButton'
+import { RadioGroupUsingConfig } from './RadioGroupUsingConfig'
+import { RadioGroupUsingProps } from './RadioGroupUsingProps'
+import { RadioGroupManual } from './RadioGroupManual'
 
 interface Props {}
 
-const Main: React.FC<Props> = (props: Props) => {
+export const RadioGroup: React.FC<Props> = (props: Props) => {
   const [drink1, setDrink1] = React.useState<string>('bra')
   const [drink2, setDrink2] = React.useState<string>('bra')
   const [drink3, setDrink3] = React.useState<string>('bra')
@@ -52,5 +52,3 @@ const Main: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
-export default Main

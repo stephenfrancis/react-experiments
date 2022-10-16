@@ -1,11 +1,15 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import '@testing-library/jest-dom'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
-import Main from './index'
+import { ModalManager } from './index'
 
 describe('how the Modal works', () => {
   test('opening Modal B closes Modal A is currently open', async () => {
-    const { container } = render(<Main />)
+    const { container } = render(<ModalManager />)
     expect(container.querySelector('h4')).toBe(null)
 
     const buttons = container.querySelectorAll('button')

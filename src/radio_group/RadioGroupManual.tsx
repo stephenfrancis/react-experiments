@@ -1,5 +1,5 @@
 import React from 'react'
-import RadioButton from './RadioButton'
+import { RadioButton } from './RadioButton'
 
 interface RadioOptionProps {
   id: string
@@ -44,7 +44,7 @@ interface MainProps {
   value: string
 }
 
-const RadioGroupManual: React.FC<MainProps> = (props: MainProps) => {
+export const RadioGroupManual: React.FC<MainProps> = (props: MainProps) => {
   return (
     <fieldset
       style={{
@@ -93,5 +93,3 @@ const RadioGroupManual: React.FC<MainProps> = (props: MainProps) => {
     </fieldset>
   )
 }
-
-export default RadioGroupManual
