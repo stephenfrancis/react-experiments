@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Outer</title>
+    <script>
+      window.addEventListener('message', receiveMessage, false);
+
+      function receiveMessage(evt) {
+        // console.log('got message:', event);
+        if (evt.origin === 'http://localhost:10001' && evt.data?.action === 'reheight') {
+          console.log('got message: ' + evt.data.height);
+          document.querySelector('iframe').height = evt.data.height;
+          // Set the height on your iframe here
+        }
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+      }
+      iframe {
+        border: 1px;
+        border-style: solid;
+        border-color: green;
+        width: calc(100% - 2px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Outer</h1>
+    <iframe src="./inner.html"></iframe>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Inner</title>
+    <script>
+      window.onload = function () {
+        console.log('sending message');
+        window.parent.postMessage({ action: 'reheight', height: document.body.scrollHeight }, 'http://localhost:10001');
+      };
+    </script>
+    <style>
+      html {
+        overflow-y: hidden;
+      }
+      #high {
+        border: 3px solid red;
+        height: 2000px;
+        width: 75vw;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Inner</h1>
+    <div id="high">high content</div>
+  </body>
+</html>
